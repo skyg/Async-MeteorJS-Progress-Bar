@@ -1,0 +1,44 @@
+<head>
+    <title>All i wanna do is export !</title>
+</head>
+
+<body>
+<div class="container">
+    <h1 class="my-4">Looking for a link ?</h1>
+    <span class="float-end badge bg-info">{{countBars}} progress bar{{#if isGreaterThan countBars 1}}s{{/if}}</span>
+
+    <button class="btn btn-primary mb-3 export shadow-sm">
+        Export me and find some !
+    </button>
+    {{#each progressBars}}
+        <div class="border border-2 rounded mb-3 shadow">
+            <div class="p-4">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            {{#if isEqual progress 100}}
+                <div class="completed-link mt-1">
+                    <span class="text-success">
+                        I found this link : <a href="{{link}}" target="_blank">{{link}}</a>
+                    </span>
+                </div>
+            <p class="mb-0 pb-0">
+                <a href="#" class="delete text-danger float-end" data-progressbarid="{{_id}}">
+                    X
+                </a>
+                <a href="#" class="restart text-secondary" data-progressbarid="{{_id}}">Try again ?</a>
+            </p>
+            {{else if isEqual progress 0}}
+                <em class="text-grey">loading...</em>
+            {{else if isGreaterThan progress 0}}
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                {{progress}}%
+                <em class="text-secondary">Searching...</em>
+            {{/if}}
+            </div>
+        </div>
+    {{/each}}
+</div>
+</body>
