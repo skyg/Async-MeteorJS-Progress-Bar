@@ -13,11 +13,11 @@
     {{#each progressBars}}
         <div class="border border-2 rounded mb-3 shadow">
             <div class="p-4">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress {{#if isEqual progress 100}}d-none{{/if}}" style="height:2px">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: {{progress}}%" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             {{#if isEqual progress 100}}
-                <div class="completed-link mt-1">
+                <div class="completed-link">
                     <span class="text-success">
                         I found this link : <a href="{{link}}" target="_blank">{{link}}</a>
                     </span>
